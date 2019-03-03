@@ -402,3 +402,20 @@ Code reduced inside the switch statement.
 
 Added code and improved performance of showing the best words for First Word
 Hint.
+
+**Cross-Project changes**
+
+-   Replaced lines of the form:
+
+wordPutOnBoard.Sort(delegate(Button b1, Button b2) { return
+b1.Location.X.CompareTo(b2.Location.X); });
+
+with the shorter form:
+
+wordPutOnBoard.Sort((b1, b2) =\> b1.Location.X.CompareTo(b2.Location.X));
+
+-   Used property initializers to reduce code
+
+-   Removed unnecessary Using statements (with the help of Visual Studio 2017)
+
+-   Removed unnecessary references from project
