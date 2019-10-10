@@ -257,7 +257,20 @@ namespace Scrabble
             {
                 ToolTip toolTipDoubleWord = new ToolTip();
 
-                toolTipDoubleWord.BackColor = Color.LightCyan;
+                toolTipDoubleWord.OwnerDraw = true;
+
+
+
+                // Anonymous event handler using lambda expression
+
+                toolTipDoubleWord.Draw += (sender, e) =>     
+                {
+                    toolTipDoubleWord.BackColor = Color.LightCyan;
+
+                    e.DrawBackground();
+                    e.DrawText();
+                };
+
 
 
                 if (wordPutOnBoard[0].Location.Y == wordPutOnBoard[1].Location.Y)
@@ -278,8 +291,19 @@ namespace Scrabble
 
             ToolTip toolTipWordPoints = new ToolTip();
 
-            toolTipWordPoints.BackColor = Color.MediumSpringGreen;
+            toolTipWordPoints.OwnerDraw = true;
 
+
+
+            toolTipWordPoints.Draw += (sender, e) =>
+            {
+                toolTipWordPoints.BackColor = Color.MediumSpringGreen;
+
+                e.DrawBackground();
+                e.DrawText();
+            };
+
+            
 
             if (wordPutOnBoard[0].Location.Y == wordPutOnBoard[1].Location.Y)
             {
@@ -295,6 +319,7 @@ namespace Scrabble
             return wordPoints;
 
         }
+
 
 
         public bool CheckStillFirstMove()

@@ -125,7 +125,22 @@ namespace Scrabble
 
 
             ToolTip toolTipWordPoints = new ToolTip();
-            toolTipWordPoints.BackColor = Color.MediumSpringGreen;
+
+            toolTipWordPoints.OwnerDraw = true;
+
+
+
+            // Anonymous event handler using lambda expression
+
+            toolTipWordPoints.Draw += (sender, e) =>
+            {
+                toolTipWordPoints.BackColor = Color.MediumSpringGreen;
+
+                e.DrawBackground();
+                e.DrawText(TextFormatFlags.Left);
+            };
+
+
 
             wordsCombinationsPoints = totalWordsPoints + " points given.\n\n" + wordsCombinationsPoints;
                 
@@ -622,19 +637,32 @@ namespace Scrabble
 
             if (multiplyFactor > 1)
             {
-                ToolTip toolTipDoubleWord = new ToolTip();
+                ToolTip toolTipDoubleOrTripleWord = new ToolTip();
 
-                toolTipDoubleWord.BackColor = Color.LightCyan;
+                toolTipDoubleOrTripleWord.OwnerDraw = true;
+
+
+
+                // Anonymous event handler using lambda expression
+
+                toolTipDoubleOrTripleWord.Draw += (sender, e) =>
+                {
+                    toolTipDoubleOrTripleWord.BackColor = Color.LightCyan;
+
+                    e.DrawBackground();
+                    e.DrawText();
+                };
+
 
 
                 if (buttonsCombined[i][0].Location.Y == buttonsCombined[i][1].Location.Y)
                 {
-                    toolTipDoubleWord.Show(wordPoints + " x " + multiplyFactor, buttonsCombined[i][buttonsCombined[i].Count - 1], 30, 0, 3000);
+                    toolTipDoubleOrTripleWord.Show(wordPoints + " x " + multiplyFactor, buttonsCombined[i][buttonsCombined[i].Count - 1], 30, 0, 3000);
                 }
 
                 else
                 {
-                    toolTipDoubleWord.Show(wordPoints + " x " + multiplyFactor, buttonsCombined[i][buttonsCombined[i].Count - 1], 0, 30, 3000);
+                    toolTipDoubleOrTripleWord.Show(wordPoints + " x " + multiplyFactor, buttonsCombined[i][buttonsCombined[i].Count - 1], 0, 30, 3000);
                 }
 
             }

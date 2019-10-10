@@ -29,3 +29,4 @@ D:\My Own CSharp Projects\Scrabble\Scrabble\obj\Debug\Scrabble.frmWildCard.resou
 D:\My Own CSharp Projects\Scrabble\Scrabble\obj\Debug\Scrabble.csproj.GenerateResource.Cache
 D:\My Own CSharp Projects\Scrabble\Scrabble\obj\Debug\Scrabble.csproj.CoreCompileInputs.cache
 D:\My Own CSharp Projects\Scrabble\Scrabble\bin\Debug\Scrabble.exe.config
+D:\My Own CSharp Projects\Scrabble\Scrabble\obj\Debug\Scrabble.csprojAssemblyReference.cache

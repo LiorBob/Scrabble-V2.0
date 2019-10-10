@@ -186,6 +186,7 @@ namespace Scrabble
 
 
 
+
         private void CheckBingoAndProceedNextMove()
         {
             if (wordPutOnBoard.Count == MAX_LETTERS_CAN_HOLD)
@@ -193,7 +194,23 @@ namespace Scrabble
                 score += BINGO_BONUS;
 
                 ToolTip toolTipBingoBonus = new ToolTip();
-                toolTipBingoBonus.BackColor = Color.Orange;
+
+
+                toolTipBingoBonus.OwnerDraw = true;
+
+
+
+                // Anonymous event handler using lambda expression
+
+                toolTipBingoBonus.Draw += (sender, e) =>
+                {
+                    toolTipBingoBonus.BackColor = Color.Orange;
+
+                    e.DrawBackground();
+                    e.DrawText(TextFormatFlags.Left);
+                };
+
+
 
                 toolTipBingoBonus.ToolTipIcon = ToolTipIcon.Info;
                 toolTipBingoBonus.Show("Bingo!\n" + BINGO_BONUS + " points bonus", lblBoardSquares[0], 563, 380, 3000);
